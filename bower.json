@@ -7,7 +7,7 @@
     "name": "Centralway Factory"
   },
   "dependencies": {
-    "lungo": "2.1.0",
+    "lungojs": "2.1.0",
     "angular": "1.0.6"
   },
   "readme": "README.md",
