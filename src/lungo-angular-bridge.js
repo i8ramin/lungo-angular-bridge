@@ -55,7 +55,7 @@ var AppRouter = function(Lungo, $location, $scope) {
   var _resetAsideStates = function() {
     var openAsides = Lungo.dom('aside[class*="show"]');
     angular.forEach(openAsides, function(value) {
-      Lungo.View.Aside.toggle('#' + Lungo.dom(value).attr('id'));
+      Lungo.Aside.toggle(Lungo.dom(value).attr('id'));
     });
     Lungo.dom('section[class*="aside"]').removeClass('aside');
   }
@@ -117,8 +117,8 @@ angular.module('Centralway.lungo-angular-bridge', [])
       var CLASS = {
         SHOW: Lungo.Constants.CLASS.SHOW
       };
-      var show = Lungo.View.Aside.show;
-      var hide = Lungo.View.Aside.hide;
+      var show = Lungo.Aside.show;
+      var hide = Lungo.Aside.hide;
       // The following probably sets the minimum distance the user's finger must swipe before the triggering of the aside kicks in
       var MIN_XDIFF = parseInt(document.body.getBoundingClientRect().width / 3, 10);
       hrefs.each(function() {
@@ -165,13 +165,13 @@ angular.module('Centralway.lungo-angular-bridge', [])
       , link: function(scope, element, attr) {
         var asideId = element.attr('lab-aside');
         element.bind('click', function() {
-          Lungo.View.Aside.toggle('#' + asideId);
+          Lungo.Aside.toggle(asideId);
         });
         subscribeEvents(Lungo.dom(element[0]));
       }
     }
   })
-	.directive('labBoot', ['$location', function($location) {
+  .directive('labBoot', ['$location', function($location) {
     function _parseResourceParam(param) {
       return param.indexOf(',') == -1 ? param : param.split(',');
     }
@@ -182,7 +182,7 @@ angular.module('Centralway.lungo-angular-bridge', [])
       AppRouter.instance = AppRouter(Lungo, $location, scope);
     };
   }])
-	.directive('labView', ['$http', '$templateCache', '$route', '$anchorScroll', '$compile', '$controller', '$location', function($http, $templateCache, $route, $anchorScroll, $compile, $controller, $location) {
+  .directive('labView', ['$http', '$templateCache', '$route', '$anchorScroll', '$compile', '$controller', '$location', function($http, $templateCache, $route, $anchorScroll, $compile, $controller, $location) {
   return {
     restrict: 'ECA',
     terminal: true,

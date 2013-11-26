@@ -1,7 +1,7 @@
 'use strict';
 
 function toggleRightAside() {
-  Lungo.View.Aside.toggle('#rightaside');
+  Lungo.Aside.toggle('#rightaside');
 }
 
 function AppCtrl($scope) {
